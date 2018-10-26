@@ -8,6 +8,7 @@ As asked by the speaker running the lesson, this section will be providing previ
 
 ### 26 October 2018 
 #### TODO
+
     As the application we were asked for is quite big, I will get to it a way I'm not used to : I'll start with the front !
     Today, my goal is to setup a new Vue.js application, using boostrap-vue and to create an interface I may feed with the
     large amount of data we need to display
