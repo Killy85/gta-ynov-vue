@@ -10,21 +10,21 @@ As asked by the speaker running the lesson, this section will be providing previ
 
 #### TODO
 
-    As the application we were asked for is quite big, I will get to it a way I'm not used to : I'll start with the front !
-    Today, my goal is to setup a new Vue.js application, using boostrap-vue and to create an interface I may feed with the
-    large amount of data we need to display. I will focus on the employee interface and the differents tabs we will need.
+As the application we were asked for is quite big, I will get to it a way I'm not used to : I'll start with the front !
+Today, my goal is to setup a new Vue.js application, using boostrap-vue and to create an interface I may feed with the
+large amount of data we need to display. I will focus on the employee interface and the differents tabs we will need.
 
 ### What I've done '?'
 
-    The main structure is here. I've got a Vue.js project running and webpack building my app correctly. I did begin the interface for the employee personna. This is really basic and need more thinking and refinment.
+The main structure is here. I've got a Vue.js project running and webpack building my app correctly. I did begin the interface for the employee personna. This is really basic and need more thinking and refinment.
 
-    The problem here is that there is a lot of functionnalities to add to one interface. Next session work may be about filter functionnalities I feel I'm able to implements, and add values loading to this interface (loads user profile from json)
+The problem here is that there is a lot of functionnalities to add to one interface. Next session work may be about filter functionnalities I feel I'm able to implements, and add values loading to this interface (loads user profile from json)
 
-    First time with webpack, and thanks to Vue.js it wasn't so hard. A lot of informations are already provided by the *vue-cli* template.
+First time with webpack, and thanks to Vue.js it wasn't so hard. A lot of informations are already provided by the *vue-cli* template.
 
-    Thanks to boostrap, the interface is compatible with a mobile use. You may find [here](https://mega.nz/#!rBwlUQqQ!RcIQuLJ3RHk-x7MvStb0y4jGeaNos_R7QqtoUTNtHok) the vieo capture of the site from my mobile.
+Thanks to boostrap, the interface is compatible with a mobile use. You may find [here](https://mega.nz/#!rBwlUQqQ!RcIQuLJ3RHk-x7MvStb0y4jGeaNos_R7QqtoUTNtHok) the vieo capture of the site from my mobile.
 
-    You'll of course see that none of the button are linked to methods. The application is pure view, no functionnalities are yet implemented.
+You'll of course see that none of the button are linked to methods. The application is pure view, no functionnalities are yet implemented.
 
 ## Access *state-of-the-art* application
 
