@@ -1,7 +1,10 @@
 import Vue from 'vue';
+import FullCalendar from 'vue-full-calendar';
 import Router from 'vue-router';
-import HelloWorld from '@/components/HelloWorld';
+import Employee from '@/components/Employee';
+import 'fullcalendar/dist/fullcalendar.min.css';
 
+Vue.use(FullCalendar);
 Vue.use(Router);
 
 export default new Router({
@@ -9,7 +12,7 @@ export default new Router({
     {
       path: '/',
       name: 'HelloWorld',
-      component: HelloWorld,
+      component: Employee,
     },
   ],
 });
