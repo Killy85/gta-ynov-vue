@@ -22,6 +22,10 @@ As asked by the speaker running the lesson, this section will be providing previ
 
     First time with webpack, and thanks to Vue.js it wasn't so hard. A lot of informations are already provided by the *vue-cli* template.
 
+    Thanks to boostrap, the interface is compatible with a mobile use. You may find [here](https://mega.nz/#!rBwlUQqQ!RcIQuLJ3RHk-x7MvStb0y4jGeaNos_R7QqtoUTNtHok) the vieo capture of the site from my mobile.
+
+    You'll of course see that none of the button are linked to methods. The application is pure view, no functionnalities are yet implemented.
+
 ## Access *state-of-the-art* application
 
 The project is builded and pushed to [my github.io page](https://killy85.github.io/#/)
