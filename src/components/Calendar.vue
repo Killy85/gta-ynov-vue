@@ -39,8 +39,6 @@ if(tempSchedule.horaires === schedule.horaires){
   tempSchedule = {"horaires" : []}
 }
 
-console.log(tempSchedule.horaires == schedule.horaires)
-
 if(tempSchedule.horaires.length <=0){
   schedule.horaires.forEach((element) => {
   const key = Object.keys(element)[0];
