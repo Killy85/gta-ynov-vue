@@ -1,7 +1,11 @@
 <template>
-<b-container id="login-container">
+<b-container id="login-container" fluid>
+    <div id="background">
+        <img src="../assets/img/bg_login.jpg">
+    </div>
+    <h1> Welcome to your work planning!</h1>
     <b-alert v-if="error_on_login" show variant="danger">Error while login you : Email or password does not match</b-alert>
-    <b-jumbotron>
+    <b-jumbotron id ="jumbotron">
         <b-form @submit="onSubmit">
             <b-form-input id="exampleInput1"
                 type="email"
@@ -69,7 +73,37 @@ mounted() {
 
 
 <style scoped>
+
+h1 {
+    color: beige;
+}
 #login-container {
-    margin-top: 10%;
+    height: 100vh;
+    padding: 10%;
+    max-height: 100vh;
+}
+
+#background {
+    filter: blur(18px);
+    -webkit-filter: blur(18px);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+img {
+    width: 100vw;
+    height: 100vh;
+}
+#background:hover {
+    opacity: .6;
+    filter: blur(.5px);
+}
+
+
+#jumbotron{
+    filter: initial;
+    -webkit-filter: initial;
+    position: relative;
 }
 </style>
