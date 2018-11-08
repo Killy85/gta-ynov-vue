@@ -27,13 +27,18 @@
       <b-tab title="Home" active>
         <b-container class="bv-example-row">
         <b-row class="text-center">
-          <b-col>
+          <b-col lg="4" id="col_home">
             <b-container fluid class="p-4 bg-dark">
               <b-row>
                 <b-col>
                   <b-img rounded="circle" width="75" height="75" blank-color="#777" class="m-1" src="https://picsum.photos/250/250/?image=54" alt="Thumbnail" />
                   <p class="text-light"> {{ name }}</p>
+                  <p class="text-light"> {{ adress }} </p>
                   <p class="text-light"> {{ job }} </p>
+                  <p class="text-light"> {{ email }} </p>
+                  <p class="text-light"> {{ phone }} </p>
+                  <p class="text-light"> {{ birthdate }} </p>
+
                   <b-button variant="primary">
                     Request Time Off
                   </b-button>
@@ -59,14 +64,13 @@
             <label> Name </label>
             <b-form-input v-model="form.name_form"></b-form-input>
             <label>Birthdate</label>
-            <b-form-input type="date"></b-form-input>
+            <b-form-input type="date" v-model="form.birthdate_form"></b-form-input>
             <label>Adress</label>,
-            <b-form-input></b-form-input>
+            <b-form-input v-model="form.adress_form"></b-form-input>
             <label>Phone number</label>
-            <b-form-input type="text"></b-form-input>
+            <b-form-input type="text" v-model="form.phone_form"></b-form-input>
             <label> Email </label>
-            <b-form-input type="email"></b-form-input>
-            <p>Your infos : {{ form.name_form }}</p>
+            <b-form-input type="email" v-model="form.email_form"></b-form-input>
         </b-container>
       </b-tab>
       <b-tab title="Planning">
@@ -101,6 +105,10 @@ export default {
       app_name: 'GTA-Ynov-Vue',
       events: [],
       name: 'Basic Name',
+      adress : "7 rue du bout du monde, 44000 Nantes",
+      birthdate : "10/10/1999",
+      phone : "0606060606",
+      email : "bonjour@company.com",
       job: 'This is a job',
       beginDate: formatDate(new Date()),
       endDate: formatDate(new Date()),
@@ -108,7 +116,10 @@ export default {
       event: [],
       form: {
         name_form: this.name,
-        job_form: this.job,
+        adress_form: this.adress,
+        birthdate_form: this.birthdate,
+        phone_form: this.phone,
+        email_form: this.email
       },
     };
   },
@@ -119,7 +130,10 @@ export default {
     form: {
       handler(val, oldval) {
         this.name = val.name_form;
-        console.log(this.name);
+        this.adress = val.adress_form;
+        this.birthdate = val.birthdate_form;
+        this.phone = val.phone_form;
+        this.email = val.email_form;
       },
       deep: true,
     },
@@ -130,6 +144,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  #col_home{
+    word-wrap: break-word
+  }
+
   h1,
   h2 {
     font-weight: normal;
