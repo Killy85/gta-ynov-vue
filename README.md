@@ -35,6 +35,11 @@ Also it may be great to begin the login portal and see how we may manage credent
 
 ### What I've done '?'
 
+The skeleton begin to use data. I used static json files to mock data API. I make processing less readable ( need to search a collection) but it works! You now have a home screen which display your main information, a tab you can use to update those and a last planning tab. This last tab show the next day of the employee (month view). Events are set as they are in the json file. The user may move those events (drag'em up or down) or resize them. This will trigger a method to store this in a temporary file. Also the user is prompted with a message saying the actual schedule has been modified and has to be validated before to be official.
+
+Then, i've worked and a login page. Once again, valid credentials are stored in a json file. This is now the entry point of the application. You may log in with the following credentials : bonjour@company.com and password is `oui`.
+
+This will lead you to the homepage. You may see there are others account, corresponding to others roles we may devellop later. Those point to a Not Found page at the moment.
 
 ## Access *state-of-the-art* application
 
