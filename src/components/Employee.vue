@@ -41,30 +41,36 @@
               </b-row>
             </b-container>
             <b-container fluid class="p-4">
-             <p> My contract: </p>
+            <p><h2> My contract:</h2></p>
                 <p>  Started at {{ beginDate }} </p>
                 <p v-if="endDate">  Finish at {{ endDate }} </p>
                 <p>  {{ hoursAWeek}} hours per week </p>
             </b-container>
           </b-col>
           <b-col cols="12" lg="8">
-            <b-container fluid class="p-4">
-            <label> Name </label> 
-            <b-form-input v-model="form.name"></b-form-input>
-            <label> Job </label> 
-            <b-form-input v-model="form.job"></b-form-input>
-
-            <p>Your infos : {{ form.name }} {{ form.job }}</p>
-            </b-container>
+            <b-alert variant="success" show dismissible>Welcome back {{name}}!</b-alert>
+            <p>Your infos:</p>
           </b-col>
         </b-row>
         </b-container>
       </b-tab>
-      <b-tab title="My info">
-        <br>I'm the second tab content
+      <b-tab title="Updating my informations">
+        <b-container fluid class="p-4">
+            <label> Name </label>
+            <b-form-input v-model="form.name_form"></b-form-input>
+            <label>Birthdate</label>
+            <b-form-input type="date"></b-form-input>
+            <label>Adress</label>,
+            <b-form-input></b-form-input>
+            <label>Phone number</label>
+            <b-form-input type="text"></b-form-input>
+            <label> Email </label>
+            <b-form-input type="email"></b-form-input>
+            <p>Your infos : {{ form.name_form }}</p>
+        </b-container>
       </b-tab>
       <b-tab title="Planning">
-        <calendar></calendar>
+        <calendar v-model="events"></calendar>
       </b-tab>
     </b-tabs>
   </div>
@@ -74,18 +80,18 @@
 import Calendar from '@/components/Calendar';
 
 function formatDate(date) {
-  var monthNames = [
-    "January", "February", "March",
-    "April", "May", "June", "July",
-    "August", "September", "October",
-    "November", "December"
+  const monthNames = [
+    'January', 'February', 'March',
+    'April', 'May', 'June', 'July',
+    'August', 'September', 'October',
+    'November', 'December',
   ];
 
-  var day = date.getDate();
-  var monthIndex = date.getMonth();
-  var year = date.getFullYear();
+  const day = date.getDate();
+  const monthIndex = date.getMonth();
+  const year = date.getFullYear();
 
-  return day + ' ' + monthNames[monthIndex] + ' ' + year;
+  return `${day} ${monthNames[monthIndex]} ${year}`;
 }
 
 export default {
@@ -97,15 +103,27 @@ export default {
       name: 'Basic Name',
       job: 'This is a job',
       beginDate: formatDate(new Date()),
-      endDate : formatDate(new Date()),
-      hoursAWeek : 'Too Much',
-      form : {
-        name : this.name,
-        job : this.job
-      }
+      endDate: formatDate(new Date()),
+      hoursAWeek: 'Too Much',
+      event: [],
+      form: {
+        name_form: this.name,
+        job_form: this.job,
+      },
     };
   },
-  components: { Calendar },
+  components: {
+    Calendar
+  },
+  watch: {
+    form: {
+      handler(val, oldval) {
+        this.name = val.name_form;
+        console.log(this.name);
+      },
+      deep: true,
+    },
+  },
 };
 
 </script>
@@ -129,5 +147,5 @@ export default {
 
   a {
     color: #42b983;
-  }  
+  }
 </style>

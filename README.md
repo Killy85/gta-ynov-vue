@@ -26,6 +26,16 @@ Thanks to boostrap, the interface is compatible with a mobile use. You may find 
 
 You'll of course see that none of the button are linked to methods. The application is pure view, no functionnalities are yet implemented.
 
+### 08 November 2018
+
+#### TODO
+
+Today's goal is to add data to the first view, while finishing it. I will be using static JSON files to mock calls to a potential API. 
+Also it may be great to begin the login portal and see how we may manage credentials. There again we will use JSON file to store fake data that will represent response of the API.
+
+### What I've done '?'
+
+
 ## Access *state-of-the-art* application
 
 The project is builded and pushed to [my github.io page](https://killy85.github.io/#/)
