@@ -64,7 +64,6 @@ methods : {
 },
 mounted() {
     if(window.sessionStorage.getItem('SessionId')){
-        console.log("Bonjour")
         this.$router.push('/home')
     }
 }

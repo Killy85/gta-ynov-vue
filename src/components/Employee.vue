@@ -1,5 +1,13 @@
 <template>
   <div class="hello">
+    <b-modal id="modal1" title="Changing Password" @ok="changePassVal">
+      <b-form-input type="password"
+                      placeholder="Enter your current password"
+                      v-model="pass"></b-form-input>
+      <b-form-input type="password"
+                      placeholder="Enter your new password"
+                      v-model="pass_new"></b-form-input>  
+    </b-modal>
     <b-navbar toggleable="md" type="dark" variant="info">
 
       <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
@@ -12,12 +20,10 @@
 
           <b-nav-item-dropdown right>
             <template slot="button-content">
-              <em>User</em>
+              <em>{{ name }}</em>
             </template>
-            <b-dropdown-item href="#">My info</b-dropdown-item>
-            <b-dropdown-item href="#">Account Settings</b-dropdown-item>
-            <b-dropdown-item href="#">Change my password</b-dropdown-item>
-            <b-dropdown-item href="#">Logout</b-dropdown-item>
+            <b-dropdown-item v-b-modal.modal1 >Change my password</b-dropdown-item>
+            <b-dropdown-item @click="logout" >Logout</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
 
@@ -54,6 +60,8 @@
           </b-col>
           <b-col cols="12" lg="8">
             <b-alert variant="success" show dismissible>Welcome back {{name}}!</b-alert>
+            <b-alert variant="success" v-if="pass_changed" show dismissible>Your password has been changed!</b-alert>
+            <b-alert variant="danger" v-if="error_on_change" show dismissible>There has been an error while changing your password</b-alert>
             <p>Your infos:</p>
           </b-col>
         </b-row>
@@ -104,7 +112,7 @@ export default {
     return {
       app_name: 'GTA-Ynov-Vue',
       events: [],
-      name: 'Basic Name',
+      name: 'John Doe',
       adress : "7 rue du bout du monde, 44000 Nantes",
       birthdate : "10/10/1999",
       phone : "0606060606",
@@ -114,6 +122,10 @@ export default {
       endDate: formatDate(new Date()),
       hoursAWeek: 'Too Much',
       event: [],
+      pass:"",
+      pass_new : "",
+      pass_changed : false,
+      error_on_change : false,
       form: {
         name_form: this.name,
         adress_form: this.adress,
@@ -129,15 +141,37 @@ export default {
   watch: {
     form: {
       handler(val, oldval) {
-        this.name = val.name_form;
-        this.adress = val.adress_form;
-        this.birthdate = val.birthdate_form;
-        this.phone = val.phone_form;
-        this.email = val.email_form;
+        this.name = val.name_form  ? val.name_form : this.name;
+        this.adress = val.adress_form  ? val.adress_form : this.adress;
+        this.birthdate = val.birthdate_form  ? val.birthdate_form : this.birthdate;
+        this.phone = val.phone_form  ? val.phone_form : this.phone;
+        this.email = val.email_form  ? val.email_form : this.email;
       },
       deep: true,
     },
   },
+  methods : {
+      logout(){
+        window.sessionStorage.removeItem('SessionId')
+        this.$router.push('/')
+      },
+      changePassVal(val){
+        let id = window.sessionStorage.getItem('SessionId')
+        let credentials = require("../../static/credential.json")
+        let user = credentials[id]
+        if(this.pass === user.pass){
+          // This is of course not working - We'll have to call the API
+          // to change the user pass
+          this.pass = this.pass_new
+          this.pass_changed = true
+        }
+        else {
+          this.error_on_change = true
+        }
+        
+
+      }
+  }
 };
 
 </script>

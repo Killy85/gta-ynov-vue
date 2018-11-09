@@ -41,6 +41,16 @@ Then, i've worked and a login page. Once again, valid credentials are stored in 
 
 This will lead you to the homepage. You may see there are others account, corresponding to others roles we may devellop later. Those point to a Not Found page at the moment.
 
+### 09 November 2018
+
+#### TODO
+
+We only work half a day today. So goals will be lights. It first will be about to repair the form used to change infos about the user
+
+### What I've done '?'
+
+The current form is not emptying datas anymore. Also I've made the navbar button working. You can now logout and change your password. The first out send you back to the login page. The second one ask you for your current password and the new one. You are then prompted about the status of the change. Of course, it did not really change it, as we have no back-end running.
+
 ## Access *state-of-the-art* application
 
 The project is builded and pushed to [my github.io page](https://killy85.github.io/#/)
