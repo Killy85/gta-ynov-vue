@@ -51,6 +51,18 @@ We only work half a day today. So goals will be lights. It first will be about t
 
 The current form is not emptying datas anymore. Also I've made the navbar button working. You can now logout and change your password. The first out send you back to the login page. The second one ask you for your current password and the new one. You are then prompted about the status of the change. Of course, it did not really change it, as we have no back-end running.
 
+
+### 15 November 2018
+
+#### TODO
+
+Planning problem meaning only half a day of work. Today the task will be to think about an interface usable for a manager user. This is an important part in order to create a easy to use and read view which will display the planning of the employee who are managed.
+
+This mean the work will not be in the code. I'll upload visuals at the end of the session
+
+### What I've done '?'
+
+
 ## Access *state-of-the-art* application
 
 The project is builded and pushed to [my github.io page](https://killy85.github.io/#/)
