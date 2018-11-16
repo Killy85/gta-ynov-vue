@@ -62,6 +62,18 @@ This mean the work will not be in the code. I'll upload visuals at the end of th
 
 ### What I've done '?'
 
+You can see in the templates directory an idea of what the manager interface will look like. It's not finished but it is an idea of how a manager may see the differents planning. We now will have to try to recreate this interface using Vue in order to see how it adapt to a mobile view.
+
+
+### 16 November 2018
+
+#### TODO
+
+Today's session will be about to implement the interface created yesterday. We will update the login page to accept manager account and display the new page.
+
+
+### What I've done '?'
+
 
 ## Access *state-of-the-art* application
 
