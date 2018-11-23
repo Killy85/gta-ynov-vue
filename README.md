@@ -74,6 +74,19 @@ Today's session will be about to implement the interface created yesterday. We w
 
 ### What I've done '?'
 
+This has not worked out as expected. The vue-full-calendar did not include a timeline option, which is the solution I was looking for. It is a payinig option so we have to find something else. I did create the manager view, which is quite close to the employee view. For the moment I use to spawn a calendar for each person managed by this person.
+
+### 22 & 23 November 2018
+
+#### TODO
+
+Those two days, I'll focus on making planning functionnalities available. For example, I'd like to find a way to transfer to temporary planning from the employee view to the manager view in order for the last one to validate/refuse it. This will use the localstorage and maybe json files.
+
+
+### What I've done '?'
+
+The manager interface now allows the manager to see and manager the planning changes asked by the user. Using alerts and modals we display planning changes in order to make it readable by the user. What is missing at the moment is the view which may allow the manager to get an oversee of the plannings of people he is managing.
+
 
 ## Access *state-of-the-art* application
 

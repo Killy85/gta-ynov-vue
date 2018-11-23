@@ -11,11 +11,11 @@
 
 <script>
 export default {
-    name: 'Employee',
-    data() {
-        return {
-            app_name: 'GTA-Ynov-Vue',
-        };
-    }
-}
+  name: 'Employee',
+  data() {
+    return {
+      app_name: 'GTA-Ynov-Vue',
+    };
+  },
+};
 </script>

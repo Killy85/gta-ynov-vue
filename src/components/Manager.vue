@@ -8,6 +8,14 @@
                       placeholder="Enter your new password"
                       v-model="pass_new"></b-form-input>
     </b-modal>
+
+      <b-modal id="reviewPlanning" title="Bootstrap-Vue" @ok="validatePlanning">
+        <calendar :userProps="modal.people"
+                  :manager="true"
+                  v-model="events">
+        </calendar>
+      </b-modal>
+
     <b-navbar toggleable="md" type="dark" variant="info">
 
       <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
@@ -52,7 +60,9 @@
               </b-row>
             </b-container>
             <b-container fluid class="p-4">
-            <p><h2> My contract:</h2></p>
+            <p>
+              <h2>My contract:</h2>
+            </p>
                 <p>  Started at {{ beginDate }} </p>
                 <p v-if="endDate">  Finish at {{ endDate }} </p>
                 <p>  {{ hoursAWeek}} hours per week </p>
@@ -66,7 +76,12 @@
             <b-alert variant="danger" v-if="error_on_change" show dismissible>
               There has been an error while changing your password
               </b-alert>
-            <p>Your infos:</p>
+            <b-container>
+              <p>This are the planning you have to review</p>
+                <b-alert v-for="(review,mail) of reviews" variant="warning"  show>
+                  {{ review }} has changed his/her planning <b-btn :click="setUser(mail)"
+                  v-b-modal.reviewPlanning>Review it!</b-btn></b-alert>
+            </b-container>
           </b-col>
         </b-row>
         </b-container>
@@ -85,13 +100,11 @@
             <b-form-input type="email" v-model="form.email_form"></b-form-input>
         </b-container>
       </b-tab>
-      <b-tab title="Planning">
-        <calendar :userProps="email" v-model="events"></calendar>
-      </b-tab>
     </b-tabs>
   </div>
 </template>
 <script>
+
 
 import Calendar from '@/components/Calendar';
 
@@ -111,13 +124,13 @@ function formatDate(date) {
 }
 
 export default {
-  name: 'Employee',
+  name: 'Manager',
   data() {
     return {
       app_name: 'GTA-Ynov-Vue',
       events: [],
-      name: 'John Doe',
-      adress: '7 rue du bout du monde, 44000 Nantes',
+      name: 'I\'m a manager',
+      adress: 'Somewhere',
       birthdate: '10/10/1999',
       phone: '0606060606',
       email: 'bonjour@company.com',
@@ -137,6 +150,22 @@ export default {
         phone_form: this.phone,
         email_form: this.email,
       },
+      reviews: [
+        ('John Doe', 'bonjour@company.com'),
+        ('Irvin Mc Guire', 'else@company.com'),
+        ('Another Nice Name', 'test@company.com'),
+      ],
+      managed_peoples: [
+        'John Doe',
+        'Irvin Mc Guire',
+        'Another Nice Name',
+        'Uther Pendragon',
+        'Neil Pencer',
+        'Raymond Holt',
+      ],
+      modal: {
+        people: null,
+      },
     };
   },
   components: {
@@ -145,7 +174,7 @@ export default {
   watch: {
     form: {
       handler(val, oldval) {
-        if (val === oldval) {
+        if (val !== oldval) {
           this.name = val.name_form ? val.name_form : this.name;
           this.adress = val.adress_form ? val.adress_form : this.adress;
           this.birthdate = val.birthdate_form ? val.birthdate_form : this.birthdate;
@@ -174,6 +203,21 @@ export default {
         this.error_on_change = true;
       }
     },
+    setUser(mail) {
+      if (this.modal.people && this.monthIndex.people !== mail) { this.modal.people = mail; }
+    },
+    validatePlanning() {
+        // Here is the method were we would validate planning updates
+        // The fact we have no access to an API limitate this behaviour
+        // We may use borwserify and fs to change the input value
+        // But it would not be worth the work
+
+        //api.updatePlanning(this.modal.people, window.localStorage.getItem(usermail-schedule)
+
+        window.localStorage.removeItem(this.modal.people + '-schedule.json')
+        window.sessionStorage.removeItem('modifiedSchedule');
+        window.sessionStorage.removeItem('reviewing');
+    }
   },
 };
 
@@ -203,4 +247,5 @@ export default {
   a {
     color: #42b983;
   }
+
 </style>

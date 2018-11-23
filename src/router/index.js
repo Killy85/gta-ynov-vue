@@ -20,6 +20,11 @@ export default new Router({
       component: () => import('@/components/Employee'),
     },
     {
+      path: '/manager',
+      name: 'Manager View',
+      component: () => import('@/components/Manager'),
+    },
+    {
       path: '/error',
       name: 'Not available yet',
       component: () => import('@/components/UnderConstruction'),

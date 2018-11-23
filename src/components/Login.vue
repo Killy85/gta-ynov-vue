@@ -4,7 +4,9 @@
         <img src="../assets/img/bg_login.jpg">
     </div>
     <h1> Welcome to your work planning!</h1>
-    <b-alert v-if="error_on_login" show variant="danger">Error while login you : Email or password does not match</b-alert>
+    <b-alert v-if="error_on_login" show variant="danger">
+      Error while login you : Email or password does not match
+    </b-alert>
     <b-jumbotron id ="jumbotron">
         <b-form @submit="onSubmit">
             <b-form-input id="exampleInput1"
@@ -31,42 +33,44 @@
 
 
 export default {
-name: 'Login',
-data() {
+  name: 'Login',
+  data() {
     return {
-    app_name: 'GTA-Ynov-Vue',
-    form : {
-        email : "",
-        pass : ""
-    },
-    error_on_login : false
+      app_name: 'GTA-Ynov-Vue',
+      form: {
+        email: '',
+        pass: '',
+      },
+      error_on_login: false,
     };
-},
-methods : {
+  },
+  methods: {
     onSubmit() {
-        let credentials = require("../../static/credential.json")
-        if(credentials[this.form.email]){
-            if(credentials[this.form.email].pass === this.form.pass){
-                if(credentials[this.form.email].role === "employee"){
-                    window.sessionStorage.setItem('SessionId', this.form.email)
-                    this.$router.push('/home')
-                }
-                else {
-                    this.$router.push('/error')
-                }
-            } else {
-                this.error_on_login = true
-            }
-        } else{
-            this.error_on_login = true
+      const credentials = require('../../static/credential.json');
+      if (credentials[this.form.email]) {
+        if (credentials[this.form.email].pass === this.form.pass) {
+          if (credentials[this.form.email].role === 'employee') {
+            window.sessionStorage.setItem('SessionId', this.form.email);
+            this.$router.push('/home');
+          } else if (credentials[this.form.email].role === 'manager') {
+            window.sessionStorage.setItem('SessionId', this.form.email);
+            this.$router.push('/manager');
+          } else {
+            this.$router.push('/error');
+          }
+        } else {
+          this.error_on_login = true;
         }
+      } else {
+        this.error_on_login = true;
+      }
+    },
+  },
+  mounted() {
+    if (window.sessionStorage.getItem('SessionId')) {
+      this.$router.push('/home');
     }
-},
-mounted() {
-    if(window.sessionStorage.getItem('SessionId')){
-        this.$router.push('/home')
-    }
-}
+  },
 };
 </script>
 
